@@ -1,0 +1,8 @@
+/logs
+/src/__pycache__
+/config/
+/.vscode
+
+
+!/config/app.default.config
+!/config/ids_example.csv

@@ -1,0 +1,5 @@
+pyodbc==4.0.17
+facebook_sdk==2.0.0
+fake_useragent==0.1.7
+requests==2.18.4
+progressbar2==3.34.3
