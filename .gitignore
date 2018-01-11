@@ -1,6 +1,6 @@
 /logs
 /src/__pycache__
-/config/
+/config/*
 /.vscode
 
 

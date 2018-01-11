@@ -1,6 +1,4 @@
-# Project Title
-
-Facebook Extractor
+# Facebook Extractor
 
 This tools helps to extract posts, comments, subcomments and all reactions, aggregated as total sum, from a given Facebook Page and saves them in a SQL Server Database.
 
@@ -34,6 +32,7 @@ This will not slow down the inserts after the table grows bigger. I would recomm
 
 ### Prerequisites
 
+Python 3.6
 See requirements.txt
 
 ### Additional Information
@@ -51,5 +50,5 @@ Some todos are still open
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPL-3.0 License - see the [LICENSE.md](LICENSE.md) file for details
 
