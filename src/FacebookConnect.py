@@ -34,14 +34,13 @@ __reactions_query = ','.join(['reactions.type({}).summary(total_count).limit(0).
 __page_fields = ['id','name','website','fan_count']
 __post_fields = ['id','created_time','updated_time','type','shares','message','link','from','attachments',__reactions_query]
 __comment_fields = ['id','created_time','updated_time','message','like_count','from','attachment',__reactions_query]
-__reaction_fields = ['type','id','name'] #  ID ist ID of user
 __tagged_fields = ['id','created_time','updated_time','from','message','status_type','target']
 
 
 def init(access_token, config_path):
     global __graph
     try:
-        __graph = facebook.GraphAPI(access_token=access_token, version='2.7')
+        __graph = facebook.GraphAPI(access_token=access_token, version='2.11')
     except facebook.GraphAPIError as e:
         logging.info('[graph] Error retrieving graph - Message: %s', e)
     parse_config_file(config_path)
@@ -157,8 +156,12 @@ def prepare_comment_tuple(comment,parent_object_id):
     return_tuple = return_tuple + (comment.get('react_haha').get('summary').get('total_count'),)
     return_tuple = return_tuple + (comment.get('react_angry').get('summary').get('total_count'),)
     return_tuple = return_tuple + (comment.get('react_sad').get('summary').get('total_count'),)
-    return_tuple = return_tuple + (comment.get('from').get('name'),)
-    return_tuple = return_tuple + (comment.get('from').get('id'),)
+    if comment.get('from') is None:
+        return_tuple = return_tuple + (None,)
+        return_tuple = return_tuple + (None,)
+    else:
+        return_tuple = return_tuple + (comment.get('from').get('name'),)
+        return_tuple = return_tuple + (comment.get('from').get('id'),)
     return return_tuple
 
 def get_page(page_id):
